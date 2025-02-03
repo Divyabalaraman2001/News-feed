@@ -1,0 +1,27 @@
+.dev-card {
+  width: 25rem;
+}
+
+.card-img-top {
+  width: 100%;
+  /* height: 20rem; */
+  height: auto;
+  object-fit: cover;
+}
+
+.news-title {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.dev-profile {
+  width: 150px;
+}
+
+.profileSection {
+  background-color: #eee;
+}
+
+.readmore {
+  text-decoration: none;
+}
