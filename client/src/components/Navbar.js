@@ -69,6 +69,13 @@ function Navbar() {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/profile">Your Profile</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/personalizedfeed">Personalized Feed</Link>
+                            </li>
+
+                            
+
+
                             <li className="nav-item dropdown">
                                 <Link className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Change Theme

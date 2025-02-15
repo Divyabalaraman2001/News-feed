@@ -48,7 +48,7 @@ function Profile() {
                                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" className="rounded-circle img-fluid" />
                                         <h5 className="my-3">{userData && userData.firstName} {userData && userData.lastName}</h5>
                                         <p className="text-muted mb-1">Full Stack Developer</p>
-                                        <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                                        {/* <p className="text-muted mb-4">Bay Area, San Francisco, CA</p> */}
                                         <div className="d-flex justify-content-center mb-2">
                                             <button type="button" className="btn btn-primary">Follow</button>
                                             <button type="button" className="btn btn-outline-primary ms-1">Message</button>
@@ -100,54 +100,14 @@ function Profile() {
                                     <div className="col-md-6">
                                         <div className="card mb-4 mb-md-0">
                                             <div className="card-body">
-                                                <p className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</p>
-                                                <p className="mb-1">Web Design</p>
-                                                <div className="progress rounded">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '80%' }} aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <p className="mt-4 mb-1">Website Markup</p>
-                                                <div className="progress rounded">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '72%' }} aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <p className="mt-4 mb-1">One Page</p>
-                                                <div className="progress rounded">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '89%' }} aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <p className="mt-4 mb-1">Mobile Template</p>
-                                                <div className="progress rounded">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '55%' }} aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <p className="mt-4 mb-1">Backend API</p>
-                                                <div className="progress rounded mb-2">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '66%' }} aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="card mb-4 mb-md-0">
                                             <div className="card-body">
-                                                <p className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</p>
-                                                <p className="mb-1">Web Design</p>
-                                                <div className="progress rounded">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '80%' }} aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <p className="mt-4 mb-1">Website Markup</p>
-                                                <div className="progress rounded">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '72%' }} aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <p className="mt-4 mb-1">One Page</p>
-                                                <div className="progress rounded">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '89%' }} aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <p className="mt-4 mb-1">Mobile Template</p>
-                                                <div className="progress rounded">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '55%' }} aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <p className="mt-4 mb-1">Backend API</p>
-                                                <div className="progress rounded mb-2">
-                                                    <div className="progress-bar" role="progressbar" style={{ width: '66%' }} aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

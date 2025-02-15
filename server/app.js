@@ -25,6 +25,12 @@ app.use(cookieParser());
 // Express Router
 app.use(require('./routes/auth'));
 
+app.get('/',(req,res)=>{
+    res.send(`
+        <h1>server is running  for news feed appliation</h1>
+        `)
+})
+
 app.listen(port, () => {
     console.log(`Server is listening on => http://localhost:${port}`);
 });

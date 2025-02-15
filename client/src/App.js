@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import { createContext, useReducer } from 'react';
 import { initialState, reducer } from '../src/reducer/UseReducer';
+import PersonalizedFeed from './components/personalizedNews/personalised';
 export const UserContext = createContext();
 
 // Created a routing component
@@ -21,6 +22,8 @@ const Routing = () => {
       <Route path='/entertainment' element={<News category="entertainment" />} />
       <Route path='/education' element={<News category="education" />} />
       <Route path='/profile' element={<Profile />} />
+      <Route path='/personalizedfeed' element={<PersonalizedFeed />} />
+
       <Route path='/signup' element={<SignUp />} />
       <Route path='/login' element={<Login />} />
       <Route path='/logout' element={<Logout />} />
