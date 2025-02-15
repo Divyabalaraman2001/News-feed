@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const cors = require("cors")
 
+
 // This is how you require the extern custom module using js
 // const User = require('./model/user');
 
@@ -24,12 +25,16 @@ app.use(cookieParser());
 
 // Express Router
 app.use(require('./routes/auth'));
+app.use(require('./routes/news'));
+
 
 app.get('/',(req,res)=>{
     res.send(`
         <h1>server is running  for news feed appliation</h1>
         `)
 })
+
+
 
 app.listen(port, () => {
     console.log(`Server is listening on => http://localhost:${port}`);

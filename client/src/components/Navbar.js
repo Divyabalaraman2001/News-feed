@@ -1,7 +1,9 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { UserContext } from '../App';
 import Cookies from 'js-cookie';
+import { Menu, MenuItem, Button } from "@mui/material";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 function Navbar() {
     const { state, dispatch } = useContext(UserContext)
@@ -13,6 +15,19 @@ function Navbar() {
     }
 
 
+            const [anchorEl, setAnchorEl] = useState(null);
+
+        // Handle Dropdown Open
+        const handleClick = (event) => {
+            setAnchorEl(event.currentTarget);
+        };
+
+        // Handle Dropdown Close
+        const handleClose = () => {
+            setAnchorEl(null);
+        };
+
+
 
 
     // Get a cookie
@@ -20,8 +35,8 @@ function Navbar() {
     console.log('Token:', token);
 
     const RenderMenu = () => {
-       
-        
+
+
         if (state) {
             return (
                 <>
@@ -39,7 +54,7 @@ function Navbar() {
         }
     }
     return (
-        <>
+        <>      
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <div className="navbar-brand">Dailyscope News</div>
@@ -48,7 +63,7 @@ function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" aria-current="page" to="/">All</Link>
                             </li>
                             <li className="nav-item">
@@ -62,18 +77,21 @@ function Navbar() {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/politics">Politics</Link>
-                            </li>
-                            <li className="nav-item">
+                            </li> */}
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" to="/education">Education</Link>
                             </li>
                             <li className="nav-item">
+                                <Link className="nav-link" to="/personalizedfeed">Personalized Feed</Link>
+                            </li> */}
+
+
+
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/profile">Your Profile</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/personalizedfeed">Personalized Feed</Link>
-                            </li>
 
-                            
+
 
 
                             <li className="nav-item dropdown">
@@ -98,6 +116,28 @@ function Navbar() {
 
                             </li>
                         </ul>
+
+
+                        <Button
+                            color="primary"
+                            variant="contained"
+                            onClick={handleClick}
+                            endIcon={<ArrowDropDownIcon />}
+                        >
+                            Categories
+                        </Button>
+
+                        <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+                            <MenuItem onClick={handleClose} component={Link} to="/">All</MenuItem>
+                            <MenuItem onClick={handleClose} component={Link} to="/science">Science & Technology</MenuItem>
+                            <MenuItem onClick={handleClose} component={Link} to="/sports">Sports</MenuItem>
+                            <MenuItem onClick={handleClose} component={Link} to="/entertainment">Entertainment</MenuItem>
+                            <MenuItem onClick={handleClose} component={Link} to="/politics">Politics</MenuItem>
+                            <MenuItem onClick={handleClose} component={Link} to="/education">Education</MenuItem>
+                            <MenuItem onClick={handleClose} component={Link} to="/personalizedfeed">Personalized Feed</MenuItem>
+                        </Menu>
+
+
 
                         <div className="d-flex" role="search">
                             <RenderMenu />

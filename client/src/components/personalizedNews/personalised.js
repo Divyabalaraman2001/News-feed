@@ -29,6 +29,7 @@ const PersonalizedFeed = () => {
         console.error("Error fetching articles:", error);
         setLoading(false);
       });
+      
   }, []);
 
   const handleBookmark = async (id) => {

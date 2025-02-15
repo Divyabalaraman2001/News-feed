@@ -9,12 +9,15 @@ import Logout from './components/Logout';
 import { createContext, useReducer } from 'react';
 import { initialState, reducer } from '../src/reducer/UseReducer';
 import PersonalizedFeed from './components/personalizedNews/personalised';
+import NotificationSystem from './components/notification/notification';
+import NewsFeed from './components/newsfeed/newsfeed';
 export const UserContext = createContext();
 
 // Created a routing component
 const Routing = () => {
   return (
     <Routes>
+
       <Route path='/' element={<News category="all" />} />
       <Route path='/science' element={<News category="science" />} />
       <Route path='/sports' element={<News category="sports" />} />
@@ -22,7 +25,13 @@ const Routing = () => {
       <Route path='/entertainment' element={<News category="entertainment" />} />
       <Route path='/education' element={<News category="education" />} />
       <Route path='/profile' element={<Profile />} />
+
       <Route path='/personalizedfeed' element={<PersonalizedFeed />} />
+      <Route path='/notifications' element={<NotificationSystem />} />
+      <Route path='/latestnews' element={<NewsFeed />} />
+
+
+
 
       <Route path='/signup' element={<SignUp />} />
       <Route path='/login' element={<Login />} />
