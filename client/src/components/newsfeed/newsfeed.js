@@ -21,6 +21,7 @@ import {
 } from "@mui/material";
 import { Favorite, ChatBubble, Share, ContentCopy } from "@mui/icons-material";
 import axios from "axios";
+import "./NewsFeed.css"; // Import the CSS file for styles
 
 const NewsFeed = () => {
   const [news, setNews] = useState([]);
@@ -72,7 +73,7 @@ const NewsFeed = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4" >
       <h2 className="text-center mb-4">📰 Latest News</h2>
       {loading ? (
         <div className="text-center">
@@ -92,11 +93,11 @@ const NewsFeed = () => {
                       alt={article.title}
                     />
                   )}
-                  <CardContent>
-                    <Typography variant="h6" className="mb-2">
+                  <CardContent className="zoom-effect">
+                    <Typography variant="h6" className="news-title">
                       {article.title}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" className="mb-3">
+                    <Typography variant="body2" className="news-description">
                       {article.description}
                     </Typography>
                   </CardContent>

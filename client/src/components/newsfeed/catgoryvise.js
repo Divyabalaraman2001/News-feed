@@ -22,6 +22,7 @@ import {
 } from "@mui/material";
 import { Favorite, ChatBubble, Share, ContentCopy } from "@mui/icons-material";
 import axios from "axios";
+import "./NewsFeed.css";
 
 const NewsFeedcatogoryvise = (props) => {
   const [news, setNews] = useState([]);
@@ -85,7 +86,7 @@ const NewsFeedcatogoryvise = (props) => {
                       alt={article.title}
                     />
                   )}
-                  <CardContent>
+                  <CardContent className="zoom-effect" >
                     <Typography variant="h6" className="mb-2">{article.title}</Typography>
                     <Typography variant="body2" color="textSecondary" className="mb-3">
                       {article.description}

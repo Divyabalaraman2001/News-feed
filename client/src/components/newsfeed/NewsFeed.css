@@ -1,0 +1,22 @@
+.zoom-effect {
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .zoom-effect:hover {
+    transform: scale(1.4);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+  }
+  
+  .news-title {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .news-description {
+    color: #666;
+  }
+  
