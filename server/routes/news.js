@@ -4,6 +4,7 @@ const router = express.Router();
 const bycrypt = require('bcryptjs');
 const News = require('../model/news');
 const axios = require("axios");
+const UserPreference = require('../model/userpreference');
 
 
 require("../db/connect");
@@ -39,8 +40,21 @@ router.get('/fetchelatestNews', async (req, res) => {
 
       await News.deleteMany()
   
-     const article= await News.insertMany(newsData);
-     console.log(article);
+      // console.log(article);
+      const categories = ["Sports", "Business", "General", "Technology"];
+      
+      
+      function updateProductCategories(products, categories) {
+        return products.map((product, index) => ({
+          ...product,
+          category: categories[index % categories.length]  // Assign category in a round-robin manner
+        }));
+      }
+
+      const updatedcategoriesData=updateProductCategories(newsData,categories)
+      
+      const article= await News.insertMany(updatedcategoriesData);
+
      
       res.json({ message: "News fetched and stored successfully",articles:article });
     } catch (error) {
@@ -49,9 +63,48 @@ router.get('/fetchelatestNews', async (req, res) => {
   } );
 
 // // Login
-// router.post('/login', );
+router.post('/userprefernce/:userId',async (req,res)=>{
+  const { userId } = req.params;
+  const { preferences } = req.body;
 
-// // Profile route
-// router.get('/profile', )
-// router.get('/logout', )
+  let userpreference = await UserPreference.findOne({ userId });
+
+  if (userpreference) {
+    // Update existing user preferences
+    userpreference.preferences = preferences;
+  } else {
+    // Create a new user with preferences
+    userpreference = new UserPreference({ userId, preferences });
+  }
+
+  await userpreference.save();
+  res.json({ message: "Preferences saved successfully!" });
+
+
+}
+ );
+
+
+ router.get('/fetch/userprefernce/:userId',async (req,res)=>{
+
+  const { userId } = req.params;
+  console.log(userId);
+  
+ 
+
+ 
+  const userpreference = await UserPreference.findOne({ userId: userId });
+  res.json(userpreference || { preferences: [] });
+
+}
+ );
+
+
+//  app.get("/api/preferences/:userId", async (req, res) => {
+//   const user = await User.findOne({ userId: req.params.userId });
+//   res.json(user || { preferences: [] });
+// });
+
+
+
 module.exports = router;

@@ -15,17 +15,17 @@ function Navbar() {
     }
 
 
-            const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
-        // Handle Dropdown Open
-        const handleClick = (event) => {
-            setAnchorEl(event.currentTarget);
-        };
+    // Handle Dropdown Open
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
-        // Handle Dropdown Close
-        const handleClose = () => {
-            setAnchorEl(null);
-        };
+    // Handle Dropdown Close
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
 
 
@@ -54,7 +54,7 @@ function Navbar() {
         }
     }
     return (
-        <>      
+        <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <div className="navbar-brand">Dailyscope News</div>
@@ -83,10 +83,14 @@ function Navbar() {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/personalizedfeed">Personalized Feed</Link>
-                            </li> */}
+                            </li>  */}
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/latestnews">Latest news</Link>
+                            </li>
 
-
-
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/userpreferences">My preferences</Link>
+                            </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/profile">Your Profile</Link>
                             </li>

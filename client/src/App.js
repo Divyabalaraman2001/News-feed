@@ -11,6 +11,7 @@ import { initialState, reducer } from '../src/reducer/UseReducer';
 import PersonalizedFeed from './components/personalizedNews/personalised';
 import NotificationSystem from './components/notification/notification';
 import NewsFeed from './components/newsfeed/newsfeed';
+import UserPreferences from './components/intrestBased/intrestBased';
 export const UserContext = createContext();
 
 // Created a routing component
@@ -30,7 +31,7 @@ const Routing = () => {
       <Route path='/notifications' element={<NotificationSystem />} />
       <Route path='/latestnews' element={<NewsFeed />} />
 
-
+      <Route path='/userpreferences' element={<UserPreferences />} />
 
 
       <Route path='/signup' element={<SignUp />} />

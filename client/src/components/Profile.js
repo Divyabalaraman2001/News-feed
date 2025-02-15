@@ -5,7 +5,10 @@ import { URL } from './config';
 function Profile() {
 
     const navigate = useNavigate();
+
     let [userData, setUserData] = useState(null)
+
+   
     
    
     useEffect(() => {
@@ -23,6 +26,8 @@ function Profile() {
                 })
     
                 const data = await response.json();
+                console.log(data);
+                localStorage.setItem("user",JSON.stringify(data))
                 setUserData(data);
     
                 if (response.status !== 200) {

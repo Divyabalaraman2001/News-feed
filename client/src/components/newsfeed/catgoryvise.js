@@ -18,62 +18,55 @@ import {
   MenuItem,
   Select,
   IconButton,
+  Snackbar,
 } from "@mui/material";
 import { Favorite, ChatBubble, Share, ContentCopy } from "@mui/icons-material";
 import axios from "axios";
 
-const NewsFeed = () => {
+const NewsFeedcatogoryvise = (props) => {
   const [news, setNews] = useState([]);
   const [filteredNews, setFilteredNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [category, setCategory] = useState("All");
   const [sortOption, setSortOption] = useState("latest");
   const [interactions, setInteractions] = useState({});
   const [showShareModal, setShowShareModal] = useState(false);
   const [shareLink, setShareLink] = useState("");
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/fetchelatestNews")
-      .then((response) => {
-        setNews(response.data.articles);
-        setFilteredNews(response.data.articles);
-
-        const initialInteractions = {};
-        response.data.articles.forEach((article) => {
-          initialInteractions[article._id] = { likes: 0, comments: 0, shares: 0 };
-        });
-        setInteractions(initialInteractions);
-
-        setLoading(false);
-      })
-      .catch((error) => console.error("Error fetching news:", error));
+    axios.get("http://localhost:5000/fetchelatestNews").then((response) => {
+      setNews(response.data.articles);
+      setFilteredNews(response.data.articles);
+      
+      const initialInteractions = {};
+      response.data.articles.forEach((article) => {
+        initialInteractions[article._id] = { likes: 0, comments: 0, shares: 0 };
+      });
+      setInteractions(initialInteractions);
+      setLoading(false);
+    }).catch((error) => console.error("Error fetching news:", error));
   }, []);
 
   const handleInteraction = (articleId, type) => {
     setInteractions((prev) => ({
       ...prev,
-      [articleId]: {
-        ...prev[articleId],
-        [type]: prev[articleId][type] + 1,
-      },
+      [articleId]: { ...prev[articleId], [type]: prev[articleId][type] + 1 },
     }));
   };
 
-  const handleShareClick = (url) => {
-    setShareLink(url);
+  const handleShare = (articleUrl) => {
+    setShareLink(articleUrl);
     setShowShareModal(true);
   };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareLink);
-    alert("Link copied to clipboard!");
+    setShowSnackbar(true);
   };
 
   return (
     <Container className="mt-4">
-      <h2 className="text-center mb-4">📰 Latest News</h2>
       {loading ? (
         <div className="text-center">
           <Spinner animation="border" variant="primary" />
@@ -93,23 +86,27 @@ const NewsFeed = () => {
                     />
                   )}
                   <CardContent>
-                    <Typography variant="h6" className="mb-2">
-                      {article.title}
-                    </Typography>
+                    <Typography variant="h6" className="mb-2">{article.title}</Typography>
                     <Typography variant="body2" color="textSecondary" className="mb-3">
                       {article.description}
                     </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      📰 {article.source?.name || "Unknown Source"} | ✍️ {article.author || "Anonymous"}
+                    </Typography>
                   </CardContent>
                 </CardActionArea>
+
                 <Card.Footer className="d-flex justify-content-between align-items-center">
                   <IconButton onClick={() => handleInteraction(article._id, "likes")} color="error">
-                    <Favorite />
+                    <Favorite /> <span className="ms-1">{interactions[article._id]?.likes}</span>
                   </IconButton>
+
                   <IconButton onClick={() => handleInteraction(article._id, "comments")} color="primary">
-                    <ChatBubble />
+                    <ChatBubble /> <span className="ms-1">{interactions[article._id]?.comments}</span>
                   </IconButton>
-                  <IconButton onClick={() => handleShareClick(article.url)} color="success">
-                    <Share />
+
+                  <IconButton onClick={() => handleShare(article.url)} color="success">
+                    <Share /> <span className="ms-1">{interactions[article._id]?.shares}</span>
                   </IconButton>
                 </Card.Footer>
               </Card>
@@ -117,8 +114,9 @@ const NewsFeed = () => {
           ))}
         </Row>
       )}
+
       {/* Share Modal */}
-      <Modal show={showShareModal} onHide={() => setShowShareModal(false)} centered>
+      <Modal show={showShareModal} onHide={() => setShowShareModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Share this News</Modal.Title>
         </Modal.Header>
@@ -131,8 +129,16 @@ const NewsFeed = () => {
           </InputGroup>
         </Modal.Body>
       </Modal>
+
+      {/* Snackbar Notification */}
+      <Snackbar
+        open={showSnackbar}
+        autoHideDuration={2000}
+        onClose={() => setShowSnackbar(false)}
+        message="Link copied to clipboard!"
+      />
     </Container>
   );
 };
 
-export default NewsFeed;
+export default NewsFeedcatogoryvise;
