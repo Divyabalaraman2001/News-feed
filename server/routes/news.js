@@ -15,45 +15,47 @@ router.get('/fetchelatestNews', async (req, res) => {
     try {
   
  
-      const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=tesla&from=2025-01-15&sortBy=publishedAt&apiKey=1856338024f14a45ae5b86777c7ae466`
-      );
+      // const response = await axios.get(
+      //   `https://newsapi.org/v2/everything?q=tesla&from=2025-01-15&sortBy=publishedAt&apiKey=1856338024f14a45ae5b86777c7ae466`
+      // );
   
       
-      console.log(response);
+      // console.log(response);
       
   
-      const newsData = response.data.articles.map((article) => ({
-          title: article.title,
-          description: article.description,
-          url: article.url,
-          category: "General",
-          publishedAt: article.publishedAt,
-          author: article.author || "Unknown",
-          source: {
-            id: article.source?.id || null,
-            name: article.source?.name || "Unknown Source",
-          },
-          urlToImage: article.urlToImage || "https://via.placeholder.com/150", // Fallback image
-          content: article.content || "No content available",
-        }));
+      // const newsData = response.data.articles.map((article) => ({
+      //     title: article.title,
+      //     description: article.description,
+      //     url: article.url,
+      //     category: "General",
+      //     publishedAt: article.publishedAt,
+      //     author: article.author || "Unknown",
+      //     source: {
+      //       id: article.source?.id || null,
+      //       name: article.source?.name || "Unknown Source",
+      //     },
+      //     urlToImage: article.urlToImage || "https://via.placeholder.com/150", // Fallback image
+      //     content: article.content || "No content available",
+      //   }));
 
-      await News.deleteMany()
+      // await News.deleteMany()
   
-      // console.log(article);
-      const categories = ["Sports", "Business", "General", "Technology"];
+      // // console.log(article);
+      // const categories = ["Sports", "Business", "General", "Technology"];
       
       
-      function updateProductCategories(products, categories) {
-        return products.map((product, index) => ({
-          ...product,
-          category: categories[index % categories.length]  // Assign category in a round-robin manner
-        }));
-      }
+      // function updateProductCategories(products, categories) {
+      //   return products.map((product, index) => ({
+      //     ...product,
+      //     category: categories[index % categories.length]  // Assign category in a round-robin manner
+      //   }));
+      // }
 
-      const updatedcategoriesData=updateProductCategories(newsData,categories)
+      // const updatedcategoriesData=updateProductCategories(newsData,categories)
       
-      const article= await News.insertMany(updatedcategoriesData);
+      // const article= await News.insertMany(updatedcategoriesData);
+
+      const article= await News.find()
 
      
       res.json({ message: "News fetched and stored successfully",articles:article });

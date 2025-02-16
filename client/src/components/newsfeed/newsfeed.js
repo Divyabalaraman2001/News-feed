@@ -9,14 +9,13 @@ import {
   Form,
   InputGroup,
   Modal,
+  ListGroup,
 } from "react-bootstrap";
 import {
   CardActionArea,
   CardContent,
   CardMedia,
   Typography,
-  MenuItem,
-  Select,
   IconButton,
 } from "@mui/material";
 import { Favorite, ChatBubble, Share, ContentCopy } from "@mui/icons-material";
@@ -28,6 +27,7 @@ const NewsFeed = () => {
   const [filteredNews, setFilteredNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [category, setCategory] = useState("All");
   const [sortOption, setSortOption] = useState("latest");
   const [interactions, setInteractions] = useState({});
@@ -72,9 +72,102 @@ const NewsFeed = () => {
     alert("Link copied to clipboard!");
   };
 
+  // Filter and Sort Logic
+  useEffect(() => {
+    let filtered = news;
+
+    // Search filter
+    if (searchQuery) {
+      filtered = filtered.filter((article) =>
+        article.title==null?"A":  article.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    // Category filter
+    if (category !== "All") {
+      filtered = filtered.filter((article) => article.category === category);
+    }
+
+    // Sorting
+    if (sortOption === "latest") {
+      filtered = filtered.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    } else {
+      filtered = filtered.sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
+    }
+
+    setFilteredNews(filtered);
+  }, [searchQuery, category, sortOption, news]);
+
+  // Update search suggestions based on input
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    console.log(query);
+  
+    setSearchQuery(query);
+    console.log(news);
+    
+  
+    if (query.length > 0) {
+      const suggestions = news
+        .filter((article) => article.title && typeof article.title === "string") // Ensure title is a valid string
+        .map((article) => article.title.toLowerCase()) // Convert to lowercase safely
+        .filter((title) => title.includes(query.toLowerCase())) // Perform search
+        .slice(0, 5); // Show only top 5 suggestions
+  
+      setSearchSuggestions(suggestions);
+    } else {
+      setSearchSuggestions([]);
+    }
+  };
+  
+  
+
+  // Select a suggestion from the dropdown
+  const handleSuggestionClick = (title) => {
+    setSearchQuery(title);
+    setSearchSuggestions([]);
+  };
+
   return (
-    <Container className="mt-4" >
+    <Container className="mt-4">
       <h2 className="text-center mb-4">📰 Latest News</h2>
+
+      {/* Search & Filter Controls */}
+      <Row className="mb-3">
+        <Col md={4} className="position-relative">
+          <Form.Control
+            type="text"
+            placeholder="Search by title..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          {searchSuggestions.length > 0 && (
+            <ListGroup className="search-suggestions">
+              {searchSuggestions.map((suggestion, index) => (
+                <ListGroup.Item key={index} action onClick={() => handleSuggestionClick(suggestion)}>
+                  {suggestion}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          )}
+        </Col>
+        <Col md={4}>
+          <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
+            <option value="All">All Categories</option>
+            <option value="Technology">Technology</option>
+            <option value="Sports">Sports</option>
+            <option value="Business">Business</option>
+            <option value="Entertainment">Entertainment</option>
+          </Form.Select>
+        </Col>
+        <Col md={4}>
+          <Form.Select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+            <option value="latest">Sort by Latest</option>
+            <option value="oldest">Sort by Oldest</option>
+          </Form.Select>
+        </Col>
+      </Row>
+
       {loading ? (
         <div className="text-center">
           <Spinner animation="border" variant="primary" />
@@ -118,6 +211,7 @@ const NewsFeed = () => {
           ))}
         </Row>
       )}
+
       {/* Share Modal */}
       <Modal show={showShareModal} onHide={() => setShowShareModal(false)} centered>
         <Modal.Header closeButton>
@@ -137,3 +231,4 @@ const NewsFeed = () => {
 };
 
 export default NewsFeed;
+
