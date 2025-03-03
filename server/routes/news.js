@@ -13,8 +13,8 @@ require("../db/connect");
 
 router.get('/fetchelatestNews', async (req, res) => {
     try {
-  
- 
+
+      
       // const response = await axios.get(
       //   `https://newsapi.org/v2/everything?q=tesla&from=2025-01-15&sortBy=publishedAt&apiKey=1856338024f14a45ae5b86777c7ae466`
       // );
@@ -55,10 +55,10 @@ router.get('/fetchelatestNews', async (req, res) => {
       
       // const article= await News.insertMany(updatedcategoriesData);
 
-      const article= await News.find()
+      const articles= await News.find()
 
      
-      res.json({ message: "News fetched and stored successfully",articles:article });
+      res.json({ message: "News fetched and stored successfully",articles:articles });
     } catch (error) {
       res.status(500).json({ error: "Error fetching news" });
     }
