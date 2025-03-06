@@ -12,6 +12,7 @@ import PersonalizedFeed from './components/personalizedNews/personalised';
 import NotificationSystem from './components/notification/notification';
 import NewsFeed from './components/newsfeed/newsfeed';
 import UserPreferences from './components/intrestBased/intrestBased';
+import TrendingNews from './components/trendingNews/trendingnews';
 export const UserContext = createContext();
 
 // Created a routing component
@@ -32,6 +33,7 @@ const Routing = () => {
       <Route path='/latestnews' element={<NewsFeed />} />
 
       <Route path='/userpreferences' element={<UserPreferences />} />
+      <Route path='/trendingnews' element={<TrendingNews />} />
 
 
       <Route path='/signup' element={<SignUp />} />

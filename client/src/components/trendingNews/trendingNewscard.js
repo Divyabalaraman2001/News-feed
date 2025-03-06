@@ -3,7 +3,7 @@ import { Card, Button, Row, Col, Modal, Form, InputGroup } from "react-bootstrap
 import { Favorite, ChatBubble, Share, ContentCopy } from "@mui/icons-material";
 import axios from "axios";
 
-function NewsCard({ title, description, url, urlToImage }) {
+function TendingNewsCard({ title, description, url, urlToImage,like }) {
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState(0);
   const [shares, setShares] = useState(0);
@@ -15,6 +15,7 @@ function NewsCard({ title, description, url, urlToImage }) {
     setShareLink(url);
     setShowShareModal(true);
   };
+console.log(like);
 
   // Function to copy link to clipboard
   const copyToClipboard = () => {
@@ -45,7 +46,10 @@ function NewsCard({ title, description, url, urlToImage }) {
     
     //http://localhost:5000/terending/news
 
+   window.location.reload()
 
+   
+   
 
   }
 
@@ -69,12 +73,15 @@ function NewsCard({ title, description, url, urlToImage }) {
         <Card.Footer>
           <Row className="text-center">
             <Col>
+
+           
               <Button
                 variant="link"
                 className={likes?"text-danger":""}
-                onClick={()=>likebutton({urlToImage,description,title,url})}
+               
+                onClick={(e)=>likebutton({urlToImage,description,title,url})}
               >
-                <Favorite color={likes?"red":"black"} /> {likes}
+                <Favorite color={likes?"red":"black"} /> {like}
               </Button>
             </Col>
             <Col>
@@ -117,4 +124,4 @@ function NewsCard({ title, description, url, urlToImage }) {
   );
 }
 
-export default NewsCard;
+export default TendingNewsCard;

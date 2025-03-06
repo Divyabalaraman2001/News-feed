@@ -27,6 +27,8 @@ app.use(cookieParser());
 app.use(require('./routes/auth'));
 app.use(require('./routes/news'));
 
+///terending/news
+
 
 app.get('/',(req,res)=>{
     res.send(`

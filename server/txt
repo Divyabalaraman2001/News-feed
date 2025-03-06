@@ -1,1 +1,63 @@
 
+[
+  {
+    _id: new ObjectId("67c603df67137cfcdfaacf15"),
+    title: 'Så kan du hoppa av techorrhjulet',
+    description: 'Techoligarker och statspropaganda. Krafterna bakom sociala medier-jättarna får allt fler att vilja hoppa av plattformarna. DN:s Kristofer Ahlström frågar sig om det går att säga nej till de största tjänsterna och samtidigt hänga med socialt.',
+    likes: 4,
+    url: 'https://www.dn.se/kultur/sa-kan-du-hoppa-av-techorrhjulet/',
+    urlToImage: 'https://static.bonniernews.se/gcs/bilder/dn-mly/822c1a14-859b-43bd-a67c-36fe6f287c82.jpeg?io=1&width=1024&crop=16:9,smart',
+    publishedAt: 2025-03-03T19:32:47.258Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("67c67fff2b1e5890f7f96552"),
+    title: 'Best Before Dates by Bass',
+    description: 'I was searching for one last real world example for my upcoming video talk March 13th on time series forecasting. Hope to see you there! Or reach out to Win Vector LLC for custom training! I had the seemingly harmless thought: “Let’s look at Stack Overflow tr…',
+    likes: 3,
+    url: 'https://www.r-bloggers.com/2025/03/best-before-dates-by-bass/',
+    urlToImage: 'https://i0.wp.com/win-vector.com/wp-content/uploads/2025/03/ts_note.png?resize=600%2C294&ssl=1',
+    publishedAt: 2025-03-04T04:22:23.500Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("67c67fe02b1e5890f7f96549"),
+    title: '要求排隊點餐！男罵「店家虐待客人」業者傻眼',
+    description: '高雄三民區一間在地經營50年的麵店，近期有顧客內用，沒有排隊直接用喊的，老闆娘要他排隊等候點餐，卻被罵是「虐待客人」，讓店家覺得很莫名其妙，因為只有一人作業、當下也有其他顧客排隊，才會要求顧客按照順序來。',
+    likes: 2,
+    url: 'https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_dd69bf32-779c-469f-9df1-a4e85487e1bb',
+    urlToImage: null,
+    publishedAt: 2025-03-04T04:21:52.352Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("67c9c3b1d935922768bd3774"),
+    title: 'India considers safeguard duties amid rising steel imports and impact of Trump tariffs',
+    description: 'While the Ministry had pitched for safeguard duties in the 20–25 per cent range, there is a strong possibility of a lower limit expansion',
+    likes: 2,
+    url: 'https://www.thehindubusinessline.com/economy/india-considers-safeguard-duties-amid-rising-steel-imports-and-impact-of-trump-tariffs/article69295382.ece',
+    urlToImage: 'https://bl-i.thgim.com/public/incoming/ne592s/article69295537.ece/alternates/LANDSCAPE_1200/IMG_rolls_of_steel_sheet_2_1_LSDQJN2D.jpg',
+    publishedAt: 2025-03-06T15:48:01.083Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("67c6044b67137cfcdfaacf24"),
+    title: 'Force talent edges Wallabies star as fight for spots to face Lions heats up',   
+    description: 'An Australian Super Rugby Pacific derby provides a form guide, as Wallabies contenders press their claims for selection to take on the British and Irish Lions later this year.',
+    likes: 1,
+    url: 'https://www.abc.net.au/news/2025-03-03/super-rugby-pacific-australia-wallabies-british-irish-lions/105000498',
+    urlToImage: 'https://live-production.wcms.abc-cdn.net.au/76bea6aeb07294714b8aeb968cde0f48?impolicy=wcms_watermark_news&cropH=1205&cropW=2143&xPos=0&yPos=132&width=862&height=485&imformat=generic',
+    publishedAt: 2025-03-03T19:34:35.797Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("67c9c3b1d935922768bd3776"),
+    title: 'India considers safeguard duties amid rising steel imports and impact of Trump tariffs',
+    description: 'While the Ministry had pitched for safeguard duties in the 20–25 per cent range, there is a strong possibility of a lower limit expansion',
+    likes: 1,
+    url: 'https://www.thehindubusinessline.com/economy/india-considers-safeguard-duties-amid-rising-steel-imports-and-impact-of-trump-tariffs/article69295382.ece',
+    urlToImage: 'https://bl-i.thgim.com/public/incoming/ne592s/article69295537.ece/alternates/LANDSCAPE_1200/IMG_rolls_of_steel_sheet_2_1_LSDQJN2D.jpg',
+    publishedAt: 2025-03-06T15:48:01.094Z,
+    __v: 0
+  }
+]

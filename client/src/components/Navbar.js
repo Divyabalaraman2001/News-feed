@@ -87,6 +87,9 @@ function Navbar() {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/latestnews">Latest news</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/trendingnews">Trending news</Link>
+                            </li>
 
                             <li className="nav-item">
                                 <Link className="nav-link" to="/userpreferences">My preferences</Link>
