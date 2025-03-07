@@ -32,20 +32,14 @@ function NewsCard({ title, description, url, urlToImage }) {
 
   const likebutton= async(datas)=>{
 
-
     setLikes(likes? 0:likes+1)
-
     console.log({...datas,likes});
-
 
     const {data}=await axios.post("http://localhost:5000/terending/news",{...datas,likes:likes==0?1:0})
 
     console.log(data);
-    
-    
+  
     //http://localhost:5000/terending/news
-
-
 
   }
 

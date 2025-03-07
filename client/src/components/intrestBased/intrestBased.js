@@ -7,7 +7,7 @@ import { Box, Checkbox, FormControlLabel } from "@mui/material";
 const interestsList = ["Sports", "Politics", "Technology", "Entertainment"];
 
 const UserPreferences = ({ userId }) => {
-  const { _id } = JSON.parse(localStorage.getItem("user"));
+  const  _id  = JSON.parse(localStorage.getItem("user"))?._id;
 
   const [selectedInterests, setSelectedInterests] = useState([]);
 

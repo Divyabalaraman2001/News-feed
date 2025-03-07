@@ -6,6 +6,8 @@ const News = require('../model/news');
 const axios = require("axios");
 const UserPreference = require('../model/userpreference');
 const TrendingNews = require('../model/trending');
+const User = require('../model/user');
+const { sendVerificationEmail } = require('../utils/email');
 // const TrendingNews = require('../model/trending');
 
 
@@ -123,10 +125,7 @@ router.post("/terending/news", async (req, res) => {
     }
 
 
-
     let trendingNews;
-
-
 
     const check = await TrendingNews.findOne({ title: trending.title });
     trendingNews = new TrendingNews(trending);
@@ -154,6 +153,48 @@ router.post("/terending/news", async (req, res) => {
 
 
 
+router.put("/terending/news/:id", async (req, res) => {
+
+  try {
+    console.log(req.body); // Debugging: Check if req.body is received
+
+    const comment = req.body;
+
+    
+
+    // Validate required fields before saving
+    if (!comment.user || !comment.user) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    let trendingNews;
+    const check = await TrendingNews.findOne({ _id: req.params.id });
+    // trendingNews = new TrendingNews(trending);
+    if (check) {
+
+      check.comments.push(comment)
+      check.save()
+
+      return res.status(200).json({ message: "comment  added" })
+
+    } else {
+      return res.status(400).json({
+        message: "failed"
+      })
+    }
+
+
+    // Use 201 for successful resource creation
+  } catch (error) {
+    console.error("Error saving trending news:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+
+})
+
+
+
+
 const getTrendingNews = (newsData) => {
   return newsData
     .sort((a, b) => b.likes - a.likes); // Sort in descending order of likes
@@ -162,9 +203,24 @@ const getTrendingNews = (newsData) => {
 
 router.get("/trending/news", async (req, res) => {
   try {
+
+
+
+
     const getnews = await TrendingNews.find();
     const trendingnews = getTrendingNews(getnews);
-    
+    const users = await User.find();
+
+    users.map( async(user)=>{
+
+      console.log(user.email);
+
+      await sendVerificationEmail(user.email,trendingnews[0].title,trendingnews[0].description,trendingnews[0].url)
+      await sendVerificationEmail(user.email,trendingnews[1].title,trendingnews[1].description,trendingnews[1].url)
+      
+
+    })
+
     res.status(200).json(trendingnews);
   } catch (error) {
     console.error("Error fetching trending news:", error);

@@ -12,6 +12,11 @@ function TrendingNews() {
   const [sortBy, setSortBy] = useState("publishedAt");
   const [suggestions, setSuggestions] = useState([]);
 
+
+
+  
+  
+
   const handleSearch = async (e) => {
     const value = e.target.value;
     setSearch(value);
@@ -21,6 +26,8 @@ function TrendingNews() {
       setSuggestions([]);
     }
   };
+
+
 
   const fetchSuggestions = async (searchTerm) => {
     let url = `http://localhost:5000/trending/news`;
@@ -111,6 +118,8 @@ function TrendingNews() {
                 url={article.url}
                 description={article.description}
                 like={article.likes}
+                id={article._id}
+                commentses={article.comments}
                 likeButton={<Button variant="outlined" color="primary">Like</Button>}
                 commentButton={<Button variant="outlined" color="secondary">Comment</Button>}
                 shareButton={<Button variant="contained" color="success">Share</Button>}

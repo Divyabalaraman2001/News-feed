@@ -3,7 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
-const cors = require("cors")
+const cors = require("cors");
+const { sendVerificationEmail } = require('./utils/email');
 
 
 // This is how you require the extern custom module using js
@@ -35,6 +36,8 @@ app.get('/',(req,res)=>{
         <h1>server is running  for news feed appliation</h1>
         `)
 })
+
+
 
 
 
