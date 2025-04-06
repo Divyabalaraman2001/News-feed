@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const cors = require("cors");
 const { sendVerificationEmail } = require('./utils/email');
 
+const u=""
 
 // This is how you require the extern custom module using js
 // const User = require('./model/user');
