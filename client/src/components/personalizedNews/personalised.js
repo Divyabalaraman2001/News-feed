@@ -57,7 +57,7 @@ const PersonalizedFeed = () => {
 
       {/* Trending Chart Section */}
       <div className="mb-5">
-        <h5 className="text-center">🔥 Trending Articles</h5>
+        <h5 className="text-center">🔥 Trending Articles</h5> 
         <Bar data={chartData} />
       </div>
 
