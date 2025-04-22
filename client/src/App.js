@@ -13,12 +13,20 @@ import NotificationSystem from './components/notification/notification';
 import NewsFeed from './components/newsfeed/newsfeed';
 import UserPreferences from './components/intrestBased/intrestBased';
 import TrendingNews from './components/trendingNews/trendingnews';
+import Translator from './tes';
+
 export const UserContext = createContext();
 
 // Created a routing component
 const Routing = () => {
+
+  // Initialize Google Translate function
+
+
+
   return (
     <Routes>
+
 
       <Route path='/' element={<News category="all" />} />
       <Route path='/science' element={<News category="science" />} />
@@ -39,6 +47,8 @@ const Routing = () => {
       <Route path='/signup' element={<SignUp />} />
       <Route path='/login' element={<Login />} />
       <Route path='/logout' element={<Logout />} />
+      <Route path='/test' element={<Translator/>} />
+      
     </Routes>
   )
 }

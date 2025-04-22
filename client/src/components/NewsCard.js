@@ -48,7 +48,7 @@ function NewsCard({ title, description, url, urlToImage }) {
 
   return (
     <>
-      <Card className="shadow-lg rounded-lg overflow-hidden my-3">
+      <Card className="shadow-lg rounded-lg overflow-hidden my-3" style={{ fontFamily: '"Times New Roman", "Mukta", serif' }} >
         <Card.Img variant="top" src={urlToImage} className="news-img" />
 
         <Card.Body>

@@ -20,7 +20,7 @@ router.get('/fetchelatestNews', async (req, res) => {
 
 
     // const response = await axios.get(
-    //   `https://newsapi.org/v2/everything?q=tesla&from=2025-01-15&sortBy=publishedAt&apiKey=1856338024f14a45ae5b86777c7ae466`
+    //   `https://newsapi.org/v2/everything?q=tesla&from=2025-04-20&sortBy=publishedAt&apiKey=1856338024f14a45ae5b86777c7ae466`
     // );
 
 
@@ -64,6 +64,8 @@ router.get('/fetchelatestNews', async (req, res) => {
 
     res.json({ message: "News fetched and stored successfully", articles: articles });
   } catch (error) {
+    console.log(error);
+    
     res.status(500).json({ error: "Error fetching news" });
   }
 });
